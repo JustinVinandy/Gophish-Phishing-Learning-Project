@@ -35,23 +35,39 @@ This project was a learning exercise in setting up a phishing campaign using Gop
      - Port: 587
      - Username: Your Gmail account
      - Password: Your Gmail password
-     - OR add an app password to your gmail account.
+   - OR add an app password to your gmail account.
      - Enable 2-factor authentication
      - Go to settings -> security -> app passwords to generate a unique password for the gophish application.
 
-3. **Create an Email Template**:
+3. **Create a Sending Profile**:
+   - use "smtp.gmail.com" as your host
+   - use your email and app password
+   - The SMTP From section can be customized to look like a legitimate sender.
+     
+4. **Create an Email Template**:
    - Go to the Email Templates tab.
    - Write a phishing email with variables for customization (e.g., `{{.FirstName}}`).
+   - Add dynamic variables to adress the user, like {{.FirstName}}, {{.LastName}}, or {{.Email}}.
+   - Add a {{.URL}} tag if you want to direct users to a landing page.
+   - Add images to make it look more real
+   - Emphasize urgency
+   - Make sure to tick the "Add Tracking Image" box. 
 
-4. **Create a Landing Page**:
+5. **Create a Landing Page**:
    - Set up a simple landing page hosted on Netlify, GitHub Pages, or another platform.
    - The landing page could include a simulated login form or an educational message.
+   - If you are in a proffesional setting and have explicit consent then you can tick the "Capture Submitted Data" box (I didn't)
 
-5. **Create a Campaign**:
-   - Choose the email template and landing page.
-   - Add your target (your friend’s email, with permission).
+6. **Set up your Users and Groups**:
+   - Either import a csv file of emails and accounts or manually input the details of who you wish to fish.
 
-6. **Monitor Results**:
+7. **Create a Campaign**:
+   - Choose the email template and landing page that you created.
+   - Add your target from users and groups (your friend’s email, with permission).
+   - Add the url of where the landing page is hosted (preferably on the server that is also hosting Gophish).
+   - Set the rest of the parametres and launch.
+
+8. **Monitor Results**:
    - Track email opens, clicks, and any submitted data through the Gophish dashboard.
 
 
